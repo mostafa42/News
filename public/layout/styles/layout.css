@@ -57,19 +57,28 @@ File: Layout CSS
 .sectiontitle{display:block; margin-bottom:80px;}
 .sectiontitle *{margin:0;}
 
-#introblocks{position:relative; z-index:1; margin:-120px 0 50px; padding:30px; border-radius:10px;}
-#introblocks > ul > li{text-align:center;}/* Used when elements stack */
-#introblocks > ul > li img{width:100%;}/* Force image width to fit the full width - remove if you don't like the function */
 
-.overview{}
-.overview > li{margin-bottom:50px;}
-.overview > li:nth-last-child(-n+3){margin-bottom:0;}/* Removes bottom margin from the last three items - margin is restored in the media queries when items stack */
+.overview{
+    text-align: center;
+    width: 100%;
+    margin-left: 25%;
+}
+.overview > li{
+    border-radius: 30px;
+    margin-bottom:20px;
+    padding: 15px;
+    -webkit-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
+    width: 60%;
+}
+.overview > li:nth-last-child(-n+3){margin-bottom:20px;}/* Removes bottom margin from the last three items - margin is restored in the media queries when items stack */
 .overview > li:nth-child(3n+1){margin-left:0; clear:left;}/* Removes the need to add class="first" */
-.overview > li article{max-width:320px;}
-.overview > li article img{margin-bottom:30px;}
-.overview > li article .heading{margin:0; font-size:1.2rem;}
+.overview > li article{width: 100%;}
+.overview > li article img{margin-bottom:30px; text-align: center; height: 200px; width: 80%;}
+.overview > li article .heading{margin:0; font-size: 30px;font-weight: bold;margin-bottom: 10px;color: #000; text-align: center;}
 
-.meta li{display:inline-block; font-size:.8rem;}
+.meta li{display:inline-block; font-size:-0.2rem; margin-bottom: 20px;}
+.meta li span{margin-left: 10px;}
 .meta li::after{margin-left:5px; content:"|";}
 .meta li:last-child::after{margin:0; content:"";}
 
@@ -271,7 +280,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#D55A77;}
 /* Rows */
 .row1{color:#474747; background-color:#E9E9E9;}
 .row2, .row2 a{}
-.row3{color:#474747; background-color:#FFFFFF;}
+.row3{color:#474747; background-color:#FFFFFF; width: 50%; margin: auto;}
 .row4{color:#474747; background-color:#FFFFFF;}
 .row5, .row5 a{color:#474747; background-color:#FFFFFF;}
 
@@ -388,10 +397,10 @@ table a, #comments a{background-color:inherit;}
 	.flex-direction-nav .flex-prev, .flex-direction-nav .flex-next{display:none;}
 	.flex-control-nav{display:block;}
 
-	.imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
+	.imgl, .imgr{display:inline-block; float:none; margin:0 0 5px 0;}
 	.fl_left, .fl_right{display:block; float:none;}
 	.group .group > *:last-child, .clear .clear > *:last-child, .clear .group > *:last-child, .group .clear > *:last-child{margin-bottom:0;}/* Experimental - Needs more testing in different situations, stops double margin when stacking */
-	.one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
+	.one_half, .one_third{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
 
 	#header{text-align:center;}
 	#header #logo{margin:0 0 15px 0;}
@@ -423,4 +432,9 @@ table a, #comments a{background-color:inherit;}
 
 	#pageintro li article{max-width:none; width:100%;}
 	#pageintro li .heading{font-size:1.6rem;}
+}
+#pStyle{
+    font-size: 20px;
+    padding: 20px;
+    font-weight: bold;
 }

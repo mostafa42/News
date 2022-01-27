@@ -1,24 +1,5 @@
 @include('sharedHeader')
-
-<div class="bgded overlay light" style="background-image:url('images/demo/backgrounds/01.png');">
-    <div class="wrapper row1">
-        <header id="header" class="hoc clear">
-            <div id="logo" class="fl_left">
-                <h1><a href="index.html">News</a></h1>
-                <br>
-            </div>
-            <nav id="mainav" class="fl_right">
-                <ul class="clear">
-                    <li><button data-bs-toggle="modal" data-bs-target="#exampleModal">Add New</button></li>
-                    <li><a href="/logout">Logout</a></li>
-
-
-
-                </ul>
-            </nav>
-        </header>
-    </div>
-</div>
+@include('admin.adminNavbar')
 
 <div class="wrapper row3">
     <main class="hoc container clear">
@@ -26,42 +7,10 @@
         <!-- ################################################################################################ -->
 
         <!-- ################################################################################################ -->
-        <hr class="btmspace-80">
+        <hr class="">
         <!-- ################################################################################################ -->
-        <ul class="nospace group overview">
-            <li class="one_third">
-                <article><a href="#"><img src="images/demo/320x240.png" alt=""></a>
-                    <h6 class="heading">title 1</h6>
-                    <ul class="nospace meta">
-                        <li><i class="fa fa-user"></i>Admin</li>
-                        <li><i class="fa fa-tag"></i>12/7/2000</li>
-                    </ul>
-                    <p>This is description</p>
-                    <footer class="nospace"><a class="btn" href="#">Full Story &raquo;</a></footer>
-                </article>
-            </li>
-            <li class="one_third">
-                <article><a href="#"><img src="images/demo/320x240.png" alt=""></a>
-                    <h6 class="heading">title 1</h6>
-                    <ul class="nospace meta">
-                        <li><i class="fa fa-user"></i>Admin</li>
-                        <li><i class="fa fa-tag"></i>12/7/2000</li>
-                    </ul>
-                    <p>This is description</p>
-                    <footer class="nospace"><a class="btn" href="#">Full Story &raquo;</a></footer>
-                </article>
-            </li>
-            <li class="one_third">
-                <article><a href="#"><img src="images/demo/320x240.png" alt=""></a>
-                    <h6 class="heading">title 1</h6>
-                    <ul class="nospace meta">
-                        <li><i class="fa fa-user"></i>Admin</li>
-                        <li><i class="fa fa-tag"></i>12/7/2000</li>
-                    </ul>
-                    <p>This is description</p>
-                    <footer class="nospace"><a class="btn" href="#">Full Story &raquo;</a></footer>
-                </article>
-            </li>
+        <ul class="nospace group overview" id="allArticles">
+
         </ul>
         <!-- ################################################################################################ -->
         <!-- / main body -->
@@ -113,10 +62,17 @@
     </div>
 </div>
 <!--#############################################################-->
-<form action="news" method="get">
-    <input type="submit" name="submit" id="submit">
-</form>
-
-
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Update Article</h4>
+          </div>
+          <div class="modal-body" id="modalbody">
+          </div>
+        </div>
+      </div>
+    </div>
 
 @include('sharedFooter')

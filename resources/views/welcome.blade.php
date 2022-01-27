@@ -45,42 +45,10 @@
             <!-- ################################################################################################ -->
 
             <!-- ################################################################################################ -->
-            <hr class="btmspace-80">
+            <hr class="">
             <!-- ################################################################################################ -->
-            <ul class="nospace group overview">
-                <li class="one_third">
-                    <article><a href="#"><img src="images/demo/320x240.png" alt=""></a>
-                        <h6 class="heading">title 1</h6>
-                        <ul class="nospace meta">
-                            <li><i class="fa fa-user"></i>Admin</li>
-                            <li><i class="fa fa-tag"></i>12/7/2000</li>
-                        </ul>
-                        <p>This is description</p>
-                        <footer class="nospace"><a class="btn" href="#">Full Story &raquo;</a></footer>
-                    </article>
-                </li>
-                <li class="one_third">
-                    <article><a href="#"><img src="images/demo/320x240.png" alt=""></a>
-                        <h6 class="heading">title 1</h6>
-                        <ul class="nospace meta">
-                            <li><i class="fa fa-user"></i>Admin</li>
-                            <li><i class="fa fa-tag"></i>12/7/2000</li>
-                        </ul>
-                        <p>This is description</p>
-                        <footer class="nospace"><a class="btn" href="#">Full Story &raquo;</a></footer>
-                    </article>
-                </li>
-                <li class="one_third">
-                    <article><a href="#"><img src="images/demo/320x240.png" alt=""></a>
-                        <h6 class="heading">title 1</h6>
-                        <ul class="nospace meta">
-                            <li><i class="fa fa-user"></i>Admin</li>
-                            <li><i class="fa fa-tag"></i>12/7/2000</li>
-                        </ul>
-                        <p>This is description</p>
-                        <footer class="nospace"><a class="btn" href="#">Full Story &raquo;</a></footer>
-                    </article>
-                </li>
+            <ul class="nospace group overview" id="allArticles2">
+
             </ul>
             <!-- ################################################################################################ -->
             <!-- / main body -->
