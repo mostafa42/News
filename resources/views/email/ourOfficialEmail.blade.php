@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Neopolitan Confirm Email</title>
+    <title>{{ __('trans.siteName') }}</title>
     <!-- Designed by https://github.com/kaytcat -->
     <!-- Robot header image designed by Freepik.com -->
 
@@ -120,7 +120,7 @@
                                     <tr>
                                         <td style="font-size: 30px; text-align:center;">
                                             <br>
-                                            News Site
+                                            {{ __('trans.siteName') }}
                                             <br>
                                             <br>
                                         </td>
@@ -139,7 +139,7 @@
                                     <tr>
                                         <td class="headline">
                                             <br>
-                                            Welcome To News Site
+                                            {{ __('trans.welcomeMsg') }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -151,7 +151,7 @@
                                                     <tr>
                                                         <td style="color:#187272;">
                                                             <br>
-                                                            you can reset your password by clicking on below button
+                                                            {{ __('trans.advice') }}
                                                             <br>
                                                             <br>
                                                         </td>
@@ -173,7 +173,7 @@
                             border-radius:4px;color:#ffffff;display:inline-block;
                             font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;
                             text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">
-                                                    Click Here
+                                            {{ __('trans.clickHere') }}
                                                 </a>
                                                 <!--[if mso]>
                           </center>

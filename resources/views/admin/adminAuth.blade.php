@@ -3,20 +3,17 @@
 
 <div class="wrapper row3">
     <main class="hoc container clear">
-        <!-- main body -->
-        <!-- ################################################################################################ -->
+      <!-- main body -->
+      <hr class="btmspace-80">
+      <!-- ################################################################################################ -->
+      <ul class="nospace group overview" id="allData2">
 
-        <!-- ################################################################################################ -->
-        <hr class="">
-        <!-- ################################################################################################ -->
-        <ul class="nospace group overview" id="allArticles">
-
-        </ul>
-        <!-- ################################################################################################ -->
-        <!-- / main body -->
-        <div class="clear"></div>
+      </ul>
+      <!-- ################################################################################################ -->
+      <!-- / main body -->
+      <div class="clear"></div>
     </main>
-</div>
+  </div>
 
 <!--#############################################################-->
 <!-- Modal -->
@@ -24,34 +21,34 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add News</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('trans.addNews') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="news" method="POST" id="add_new_article_form" enctype="multipart/form-data">
                     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Article Image</label>
+                        <label for="exampleFormControlInput1" class="form-label">{{ __('trans.articleImage') }}</label>
                         <input type="file" class="form-control" name="upload_file" id="upload_file" accept="image/png, image/jpeg">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Article Title</label>
+                        <label for="exampleFormControlInput1" class="form-label">{{ __('trans.articleTitle') }}</label>
                         <input type="text" class="form-control" placeholder="Article Title" name="title" id="title">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Article Description</label>
+                        <label for="exampleFormControlTextarea1" class="form-label">{{ __('trans.articleDescription') }}</label>
                         <textarea class="form-control" placeholder="Article Description" name="description" id="description" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Article Ctegory</label>
+                        <label for="exampleFormControlTextarea1" class="form-label">{{ __('trans.articleCategory') }}</label>
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="category" id="category">
-                            <option selected value="sports">Sports</option>
-                            <option value="arts">Arts</option>
-                            <option value="politics">Politics</option>
+                            <option selected value="sports">{{ __('trans.option1') }}</option>
+                            <option value="arts">{{ __('trans.option2') }}</option>
+                            <option value="politics">{{ __('trans.option3') }}</option>
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('trans.closeBtn') }}</button>
                         <input type="submit" class="btn btn-primary" id="btn_add_new_article" value="Publish">
                     </div>
                 </form>
@@ -67,7 +64,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Update Article</h4>
+            <h4 class="modal-title" id="myModalLabel">{{ __('trans.updateArticle') }}</h4>
           </div>
           <div class="modal-body" id="modalbody">
           </div>

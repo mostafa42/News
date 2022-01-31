@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Str;
 
 use function GuzzleHttp\Promise\all;
 
@@ -20,13 +21,14 @@ class NewsController extends Controller
         $data = response()->json([ 'articles' => $allArticles ]);
         return $data ;
     }
-
+//$firstdesc=substr($request->description, 0, 30);
     public function store(News $news, Request $request)
     {
         $imageName = time().'.'.$request->file('upload_file')->guessExtension();
         $final = $request->upload_file->move(public_path('uploades'),$imageName);
 
         $newRecord = new News ;
+
         $newRecord->image = $imageName ;
         $newRecord->title = $request->title ;
         $newRecord->description = $request->description ;
@@ -34,15 +36,17 @@ class NewsController extends Controller
 
         $newRecord->save();
 
-        return response()->json([ 'message' => 'done' ]);
+        $msg =  __("trans.addSucessAlert1") ;
+        return response()->json(['message' => $msg]);
 
 
     }
 
 
-    public function show($id)
+    public function show(Request $request , $id)
     {
-        //
+        $thisArticle = News::find($id);
+        return response()->json([ 'data' => $thisArticle ]);
     }
 
     public function edit($id)
@@ -59,15 +63,20 @@ class NewsController extends Controller
             'description'=> $request->description ,
             'category'=> $request->category ,
         ]);
-        return response()->json([ 'message' => "Article is updated successfully" ]);
+        $msg =  __("trans.updateSuccessAlert1") ;
+        return response()->json(['message' => $msg]);
     }
 
     public function destroy($id)
     {
         $thisArticle = News::find($id);
         $thisArticle->delete();
-        return response()->json([ 'msg' => 'This article is deleted successfully' ]);
+        $msg =  __("trans.deleteSuccessAlert1") ;
+        return response()->json(['message' => $msg]);
     }
 
-
+    public function getLang(){
+        // return view('welcome')->with('data');
+        return 'hi' ;
+    }
 }

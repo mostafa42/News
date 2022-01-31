@@ -6,6 +6,7 @@ use App\Http\Middleware\check;
 use App\Http\Middleware\checkMailSending;
 use App\Models\News;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -22,14 +23,16 @@ use PhpParser\Node\Expr\FuncCall;
 |
 */
 
-Route::get('/', function () {
 
+
+Route::get('/', function () {
     return view('welcome')->with('data');
 });
 
 
 
 Route::get('/adminAuth', function () {
+    // App::setLocale($lang);
     return view('admin.login');
 });
 Route::get('all_news_for_user', [NewsController::class , 'getArticlesForUser']);
@@ -53,7 +56,6 @@ Route::middleware([checkMailSending::class])->group(function () {
     Route::get('/set_new_password' , function(){
         return view('admin.setNewPassword');
     });
-
 });
 
 
@@ -68,4 +70,10 @@ Route::middleware([check::class])->group(function () {
 
 
 
+});
+
+
+Route::get('//{lang}', function ($lang) {
+    App::setLocale($lang);
+    return view('welcome')->with('data');
 });

@@ -2,8 +2,8 @@
     <div class="wrapper row5">
         <div id="copyright" class="hoc clear">
           <!-- ################################################################################################ -->
-          <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
-          <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+          <p class="fl_left">{{ __('trans.copyright') }} &copy; {{ __('trans.year') }} - {{ __('trans.reciervied') }} - <a href="#">{{ __('trans.domainName') }}</a></p>
+          <p class="fl_right">{{ __('trans.Templateby') }} <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">{{ __('trans.myName') }}</a></p>
           <!-- ################################################################################################ -->
         </div>
       </div>

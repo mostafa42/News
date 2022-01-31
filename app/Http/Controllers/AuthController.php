@@ -19,8 +19,8 @@ class AuthController extends Controller
 
         $request->session()->put('token', 'my-secret-token-1032017');
         $request->session()->put('id', $data->id);
-
-        return response()->json(['message' => 'done']);
+        $msg =  __("trans.successAlert1") ;
+        return response()->json(['message' => $msg]);
     }
 
 
@@ -37,8 +37,8 @@ class AuthController extends Controller
         if( !empty($checkEmail) ){
 
             $details = [
-                'title' => 'Mail from ItSolutionStuff.com',
-                'body' => 'This is for testing email using smtp'
+                'title' => 'Mail from News.com',
+                'body' => 'This For Forget Your Password'
             ];
 
             Mail::to($email)->send(new \App\Mail\ourOfficialEmail($details));
@@ -46,7 +46,8 @@ class AuthController extends Controller
             $request->session()->put('checkEmailSent', 'true');
             $request->session()->put('email_path', $email);
 
-            return response()->json([ 'msg' => 'please check your email' ]);
+            $msg =  __("trans.pleaseCheckEmail") ;
+            return response()->json(['message' => $msg]);
         }
     }
 
@@ -72,4 +73,6 @@ class AuthController extends Controller
         $request->session()->forget('checkEmailSent');
         return redirect('/adminAuth');
     }
+
+    
 }

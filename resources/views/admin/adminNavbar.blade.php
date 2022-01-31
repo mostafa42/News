@@ -2,13 +2,13 @@
     <div class="wrapper row1">
         <header id="header" class="hoc clear">
             <div id="logo" class="fl_left">
-                <h1><a href="index.html">News</a></h1>
+                <h1><a href="index.html">{{ __('trans.siteName') }}</a></h1>
                 <br>
             </div>
             <nav id="mainav" class="fl_right">
                 <ul class="clear">
-                    <li><button data-bs-toggle="modal" data-bs-target="#exampleModal">Add New</button></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><button data-bs-toggle="modal" data-bs-target="#exampleModal">{{ __('trans.addNews') }}</button></li>
+                    <li><a href="/logout">{{ __('trans.logout') }}</a></li>
 
 
 

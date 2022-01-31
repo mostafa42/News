@@ -8,11 +8,11 @@ $("#btn_login").click(function (event) {
         dataType: "json",
         data: $("#login_form").serialize(),
         success: function (response) {
-            alert("Done");
+            alert(response.message);
             window.location.href = "/adminView";
         },
         error: function (data) {
-            alert("please check email or password");
+            alert('please check email or password');
         },
     });
 });
@@ -33,7 +33,7 @@ $("#add_new_article_form").submit(function (e) {
         success: (data) => {
             this.reset();
             fetchAllAtricle() ;
-            alert("Article has been published successfully");
+            alert(data.message);
         },
         error: function (data) {
             console.log(data);
@@ -47,6 +47,7 @@ $(document).ready(function(){
 });
 
 
+
 function fetchAllAtricle() {
     $.ajax({
         type: "get",
@@ -54,25 +55,47 @@ function fetchAllAtricle() {
         dataType: "json",
         success: function (response) {
             console.log(response.articles);
-            $('#allArticles').html("");
+            $('#allData2').html("");
+            $('.completeDescription').html("");
             $.each(response.articles , function(key , item){
-                $('#allArticles').append('<li class="">\
-                        <article>\
-                        <h6 class="heading">'+ item.title +'</h6>\
-                        <img src="uploades/'+ item.image +'" alt="" >\
-                                <ul class=" meta">\
-                                    <li style="font-weight="bold" "><i class="fa fa-user"></i><span>Admin</span></li>\
-                                    <li><i class="fa fa-calendar"></i><span>'+ item.created_at +'</span></li><br/>\
-                                    <li><i class="fa fa-tasks"></i><span>'+ item.category +'</span></li>\
-                                </ul>\
-                                    <p style="font-weight=bold !important;" id="pStyle">'+ item.description +'</p>\
-                                <footer class="nospace">\
-                                <button type="submit" onclick="edit_article('+item.id+')" class="btn">Edit</button>\
-                                <button type="submit" onclick="delete_article('+item.id+')" class="btn">Delete</button>\
-                                </footer>\
+                if(item.description.substr(0,20).length === item.description.length){
+                    $('#allData2').append('\
+                    <li class="one_third" id="contentOfNews">\
+                        <article><img src="uploades/'+item.image+'" alt="">\
+                            <h6 class="heading">'+item.title+'</h6>\
+                            <ul class="nospace meta">\
+                                <li><i class="fa fa-user"></i> <a>Admin</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>'+item.created_at+'</a></li>\
+                            </ul>\
+                            <p>'+item.description.substr(0,20)+'</p>\
+                            <footer class="nospace">\
+                                <button class="btn" onclick="edit_article(' + item.id + ')"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="delete_article('+item.id+')"><i class="fa fa-trash" aria-hidden="true"></i></button>\
+                            </footer>\
                         </article>\
-                    </li>'
-                    );
+                    </li>\
+                    ');
+                }else{
+                    $('#allData2').append('\
+                    <li class="one_third" id="contentOfNews">\
+                        <article><img src="uploades/'+item.image+'" alt="">\
+                            <h6 class="heading">'+item.title+'</h6>\
+                            <ul class="nospace meta">\
+                                <li><i class="fa fa-user"></i> <a>Admin</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>'+item.created_at+'</a></li>\
+                            </ul>\
+                            <p>'+item.description.substr(0,20)+'...</p>\
+                            <footer class="nospace">\
+                                <button class="btn" onclick="get_description(' + item.id + ')"><i class="fa fa-info-circle" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="edit_article(' + item.id + ')"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="delete_article('+item.id+')"><i class="fa fa-trash" aria-hidden="true"></i></button>\
+                            </footer>\
+                        </article>\
+                    </li>\
+                    ');
+                }
             });
         },
     });
@@ -85,21 +108,42 @@ function fetchAllAtricleForUser() {
         dataType: "json",
         success: function (response) {
             console.log(response.articles);
-            $('#allArticles2').html("");
+            $('#allData').html("");
             $.each(response.articles , function(key , item){
-                $('#allArticles2').append('<li class="">\
-                        <article>\
-                        <h6 class="heading">'+ item.title +'</h6>\
-                        <img src="uploades/'+ item.image +'" alt="" >\
-                                <ul class=" meta">\
-                                    <li style="font-weight="bold" "><i class="fa fa-user"></i><span>Admin</span></li>\
-                                    <li><i class="fa fa-calendar"></i><span>'+ item.created_at +'</span></li><br/>\
-                                    <li><i class="fa fa-tasks"></i><span>'+ item.category +'</span></li>\
-                                </ul>\
-                                    <p style="font-weight=bold !important;" id="pStyle">'+ item.description +'</p>\
+                if(item.description.substr(0,20).length === item.description.length){
+                    $('#allData').append('\
+                    <li class="one_third" id="contentOfNews">\
+                        <article><img src="uploades/'+item.image+'" alt="">\
+                            <h6 class="heading">'+item.title+'</h6>\
+                            <ul class="nospace meta">\
+                                <li><i class="fa fa-user"></i> <a>Admin</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>'+item.created_at+'</a></li>\
+                            </ul>\
+                            <p>'+item.description.substr(0,20)+'</p>\
+                            <footer class="nospace">\
+                            </footer>\
                         </article>\
-                    </li>'
-                    );
+                    </li>\
+                    ');
+                }else{
+                    $('#allData').append('\
+                    <li class="one_third" id="contentOfNews">\
+                        <article><img src="uploades/'+item.image+'" alt="">\
+                            <h6 class="heading">'+item.title+'</h6>\
+                            <ul class="nospace meta">\
+                                <li><i class="fa fa-user"></i> <a>Admin</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>'+item.created_at+'</a></li>\
+                            </ul>\
+                            <p>'+item.description.substr(0,20)+'...</p>\
+                            <footer class="nospace">\
+                                <button class="btn" onclick="get_description(' + item.id + ')">Read More</button>\
+                            </footer>\
+                        </article>\
+                    </li>\
+                    ');
+                }
             });
         },
     });
@@ -144,6 +188,7 @@ function edit_article(id) {
     });
     $('#largeModal').modal('show');
 }
+
 $(document).ready(function(){
     var form = $('.update_ajax');
 });
@@ -168,7 +213,8 @@ $(document).on("click", "#btn_update", function() {
         },
         success: function(dataResult){
             fetchAllAtricle();
-            alert('Article is updated successfully');
+            alert(dataResult.message);
+            $('#largeModal').modal('hide');
         }
     });
 });
@@ -187,7 +233,7 @@ function delete_article(id){
         cache: false,
         success: function(dataResult){
             fetchAllAtricle();
-            alert('This article is deleted successfully');
+            alert(dataResult.message);
         }
     });
 }
@@ -211,7 +257,7 @@ $(document).on("click", "#btn_forget_password", function() {
             email : email
         },
         success: function(dataResult){
-            alert(dataResult.msg);
+            alert(dataResult.message);
         },
         error: function(dataResult){
             alert('Email is not correct');
@@ -254,3 +300,23 @@ $(document).on("click", "#btn_reset_password", function()
 
 
 });
+
+function get_description(id) {
+    var url = "news/"+id;
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: url,
+        type: "get",
+        data: id,
+        cache: false,
+        success: function(dataResult){
+            $('#readMoreBodyDescription').html("");
+            $('#readMoreBodyDescription').append(dataResult.data.description);
+            $('#readMore').modal('show');
+        }
+    });
+}

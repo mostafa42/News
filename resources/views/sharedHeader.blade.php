@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>News</title>
+    <title>{{ __('trans.siteName') }}</title>
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/jpg" href="<?php echo asset('images/logo.jpg')?>"/>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -12,7 +12,7 @@
     <!------------------------------
         Starting Template files head calling
     ------------------------------>
-    
+
     <link rel="stylesheet" href="<?php echo asset('layout/styles/styles.css')?>" />
 
     <link href="<?php echo asset('layout/styles/layout.css')?>" rel="stylesheet" type="text/css" media="all">
@@ -23,3 +23,25 @@
 </head>
 
 <body id="top">
+
+    <!-- read more Modal -->
+<div class="modal mymodel fade" id="readMore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ __('trans.articleTitle') }}</h5>
+          <button type="button" class="close" onclick="closeModel()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="readMoreBodyDescription">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      function closeModel(){
+          $('#readMore').modal('hide');
+      }
+  </script>
