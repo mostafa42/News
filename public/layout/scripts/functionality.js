@@ -66,7 +66,7 @@ function fetchAllAtricle() {
                             <ul class="nospace meta">\
                                 <li><i class="fa fa-user"></i> <a>Admin</a></li>\
                                 <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
-                                <li><i class="fa fa-tag"></i> <a>'+item.created_at+'</a></li>\
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>'+item.created_at+'</a></li>\
                             </ul>\
                             <p>'+item.description.substr(0,20)+'</p>\
                             <footer class="nospace">\
@@ -84,11 +84,11 @@ function fetchAllAtricle() {
                             <ul class="nospace meta">\
                                 <li><i class="fa fa-user"></i> <a>Admin</a></li>\
                                 <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
-                                <li><i class="fa fa-tag"></i> <a>'+item.created_at+'</a></li>\
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>'+item.created_at+'</a></li>\
                             </ul>\
                             <p>'+item.description.substr(0,20)+'...</p>\
                             <footer class="nospace">\
-                                <button class="btn" onclick="get_description(' + item.id + ')"><i class="fa fa-info-circle" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="get_description_for_admin(' + item.id + ')"><i class="fa fa-info-circle" aria-hidden="true"></i></button>\
                                 <button class="btn" onclick="edit_article(' + item.id + ')"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>\
                                 <button class="btn" onclick="delete_article('+item.id+')"><i class="fa fa-trash" aria-hidden="true"></i></button>\
                             </footer>\
@@ -118,7 +118,7 @@ function fetchAllAtricleForUser() {
                             <ul class="nospace meta">\
                                 <li><i class="fa fa-user"></i> <a>Admin</a></li>\
                                 <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
-                                <li><i class="fa fa-tag"></i> <a>'+item.created_at+'</a></li>\
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>'+item.created_at+'</a></li>\
                             </ul>\
                             <p>'+item.description.substr(0,20)+'</p>\
                             <footer class="nospace">\
@@ -134,11 +134,11 @@ function fetchAllAtricleForUser() {
                             <ul class="nospace meta">\
                                 <li><i class="fa fa-user"></i> <a>Admin</a></li>\
                                 <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
-                                <li><i class="fa fa-tag"></i> <a>'+item.created_at+'</a></li>\
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>'+item.created_at+'</a></li>\
                             </ul>\
                             <p>'+item.description.substr(0,20)+'...</p>\
                             <footer class="nospace">\
-                                <button class="btn" onclick="get_description(' + item.id + ')">Read More</button>\
+                                <button class="btn" onclick="get_description_for_user(' + item.id + ')"><i class="fa fa-info-circle" aria-hidden="true"></i></button>\
                             </footer>\
                         </article>\
                     </li>\
@@ -301,7 +301,7 @@ $(document).on("click", "#btn_reset_password", function()
 
 });
 
-function get_description(id) {
+function get_description_for_admin(id) {
     var url = "news/"+id;
     $.ajaxSetup({
         headers: {
@@ -317,6 +317,27 @@ function get_description(id) {
             $('#readMoreBodyDescription').html("");
             $('#readMoreBodyDescription').append(dataResult.data.description);
             $('#readMore').modal('show');
+        }
+    });
+}
+
+function get_description_for_user(id) {
+    var url = "news/"+id;
+    // var lang = Session["locale"] ;
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: url,
+        type: "get",
+        data: { id : id },
+        cache: false,
+        success: function(dataResult){
+            $('#readMoreBodyDescription2').html("");
+            $('#readMoreBodyDescription2').append(dataResult.data.description);
+            $('#readMore2').modal('show');
         }
     });
 }

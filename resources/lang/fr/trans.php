@@ -78,7 +78,8 @@ return[
     'reciervied' => "Tous les droits sont réservés" ,
     'domainName' => 'News.com' ,
     'Templateby' => "Modèle par" ,
-    'myName' => 'Mostafa Gamal'
+    'myName' => 'Mostafa Gamal' ,
+    'allNews' => 'Toutes les nouvelles' ,
 
 ];
 

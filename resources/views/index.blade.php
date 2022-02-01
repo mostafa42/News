@@ -32,28 +32,32 @@
                 </nav>
             </header>
         </div>
+        <div id="pageintro" class="hoc clear">
+            <div class="flexslider basicslider">
+                <ul class="slides">
+                    <li>
+                        <article>
+                            <h3 class="heading">{{ __('trans.category1') }}</h3>
+                            <p> {{ __('trans.descriptionOfCategory1') }} </p>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <h3 class="heading">{{ __('trans.category2') }}</h3>
+                            <p> {{ __('trans.descriptionOfCategory2') }} </p>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <h3 class="heading">{{ __('trans.category3') }}</h3>
+                            <p> {{ __('trans.descriptionOfCategory3') }} </p>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="wrapper row3">
-        <main class="hoc container clear">
-          <!-- main body -->
-          <hr class="btmspace-80">
-          <!-- ################################################################################################ -->
-          <ul class="nospace group overview" id="allData">
 
-          </ul>
-          <!-- ################################################################################################ -->
-          <!-- / main body -->
-          <div class="clear"></div>
-        </main>
-      </div>
-      <!-- read more Modal -->
-
-      <script>
-        function closeModel(){
-            $('#readMore2').modal('hide');
-        }
-
-    </script>
 
 @include('sharedFooter')

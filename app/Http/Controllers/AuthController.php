@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -70,9 +71,8 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('token');
+        $request->session()->forget('locale');
         $request->session()->forget('checkEmailSent');
         return redirect('/adminAuth');
     }
-
-    
 }

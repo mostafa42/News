@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Str;
 
 use function GuzzleHttp\Promise\all;
 
 class NewsController extends Controller
 {
-    public function getArticlesForUser(){
+    public function getArticlesForUser(Request $request){
+
         $allArticles = News::all() ;
+
         return response()->json([ 'articles' => $allArticles ]);
     }
 
