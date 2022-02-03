@@ -8,11 +8,24 @@ $("#btn_login").click(function (event) {
         dataType: "json",
         data: $("#login_form").serialize(),
         success: function (response) {
-            alert(response.message);
-            window.location.href = "/adminView";
+            if( response.message === "done" ){
+                alert(response.message2);
+                window.location.href = "/adminView";
+            }else{
+                alert(response.message);
+            }
         },
-        error: function (data) {
-            alert('please check email or password');
+        error:function (response) {
+
+            data = response.responseJSON.errors ;
+
+            if (Object.keys(data).length > 0){
+                $('#errors').html("");
+                for (var prop in data ) {
+                   $('#errors').append( ' <li style="color: red">'+data[prop]+'</li> ' );
+                }
+            }
+
         },
     });
 });
@@ -258,9 +271,16 @@ $(document).on("click", "#btn_forget_password", function() {
         },
         success: function(dataResult){
             alert(dataResult.message);
+
         },
         error: function(dataResult){
-            alert('Email is not correct');
+            data = dataResult.responseJSON.errors ;
+            if (Object.keys(data).length > 0){
+                $('#errors').html("");
+                for (var prop in data ) {
+                   alert(data[prop]);
+                }
+            }
         }
     });
 });

@@ -72,6 +72,7 @@ return[
     'deleteSuccessAlert1' => "Cet article a été supprimé avec succès" ,
     'pleaseCheckEmail' => "Merci de consulter vos emails" ,
     'editBtn' => "Éditer" ,
+    'emailNotValid' => 'Cet e-mail est introuvable' ,
     // footer editting
     'copyright' => "Droits d'auteur" ,
     'year' => '2022' ,
@@ -80,6 +81,49 @@ return[
     'Templateby' => "Modèle par" ,
     'myName' => 'Mostafa Gamal' ,
     'allNews' => 'Toutes les nouvelles' ,
+
+    // index template translating
+    'newsSite' => 'News Site' ,
+    'YouWillFindExclusiveNews' => 'Vous trouverez des nouvelles exclusives' ,
+    'sportWord' => 'football' ,
+    'aboutSport' => "football, aussi appelé football associatif ou soccer, jeu dans lequel deux équipes de 11
+                        les joueurs, utilisant n'importe quelle partie de leur corps à l'exception de leurs mains et de leurs bras, essaient de manœuvrer
+                        le ballon dans le but de l'équipe adverse. Seul le gardien de but est autorisé à manipuler
+                        le ballon et ne peut le faire que dans la surface de réparation entourant le but. L'équipe
+                        qui marque plus de buts gagne." ,
+
+    'artWord' => "L'art" ,
+    'aboutArt' => "L'art est une gamme très diversifiée d'activités humaines engagées dans la création visuelle,
+                    des artefacts auditifs ou performés – des œuvres d’art – qui expriment l’imagination ou l’imagination de l’auteur.
+                    compétence technique, et sont destinés à être appréciés pour leur beauté ou leur émotion
+                    Puissance.
+                    Les plus anciennes formes d'art documentées sont les arts visuels, qui incluent des images ou des objets
+                    dans des domaines comme la peinture, la sculpture, la gravure, la photographie et d'autres visuels
+                    médias . L'architecture est souvent incluse comme l'un des arts visuels; cependant, comme le
+                    arts décoratifs, il s'agit de la création d'objets où l'aspect pratique
+                    les considérations d'utilisation sont essentielles, d'une manière qu'ils ne sont généralement pas dans un autre
+                    art visuel, comme une peinture." ,
+
+    'politicsWord' => 'Politique' ,
+    'aboutPolitics' => "La politique est un mot aux multiples facettes. Il a un ensemble de significations assez spécifiques qui sont
+                        descriptif et sans jugement (comme l'art ou la science de gouverner  et mais il peut porter et porte souvent
+                        une signification négative de près
+                        liés à ceux-ci (« activités politiques caractérisées par des actions astucieuses et souvent malhonnêtes
+                        les pratiques). L'anglais est une langue flexible, et il n'est pas rare qu'un mot
+                        ont plusieurs significations connexes qui couvrent toute la gamme connotative du bien au mal. Quelques
+                        d'entre eux existent depuis une période étonnamment longue. Le sens négatif de
+                        la politique, comme on le voit dans l'expression jouer à la politique, par exemple, est utilisée depuis
+                        moins 1853, lorsque l'abolitionniste Wendell Phillips déclara : « Nous ne faisons pas de politique ;
+                        l'anti-esclavage n'est pas une demi-plaisanterie avec nous." ,
+
+
+    'myNameConcatenateWithEng' => 'À propos de Eng/Mostafa gamal' ,
+    'introAboutSection' => 'Cette section saura tout sur Mostafa Gamal' ,
+    'describeMe' => "C'est un développeur Web Full Stack, il travaille avec Laravel et a +2 dans ce domaine." ,
+    'technologies' => 'Laravel + Ajax' ,
+    'loadingPage' => 'Page de destination 2022' ,
+    'callNowTitle' => 'Appelle-moi maintenant' ,
+    'myContact' => '01121238817'
 
 ];
 
