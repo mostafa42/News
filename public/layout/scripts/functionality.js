@@ -8,24 +8,24 @@ $("#btn_login").click(function (event) {
         dataType: "json",
         data: $("#login_form").serialize(),
         success: function (response) {
-            if( response.message === "done" ){
+            if (response.message === "done") {
                 alert(response.message2);
                 window.location.href = "/adminView";
-            }else{
+            } else {
                 alert(response.message);
             }
         },
-        error:function (response) {
+        error: function (response) {
+            data = response.responseJSON.errors;
 
-            data = response.responseJSON.errors ;
-
-            if (Object.keys(data).length > 0){
-                $('#errors').html("");
-                for (var prop in data ) {
-                   $('#errors').append( ' <li style="color: red">'+data[prop]+'</li> ' );
+            if (Object.keys(data).length > 0) {
+                $("#errors").html("");
+                for (var prop in data) {
+                    $("#errors").append(
+                        ' <li style="color: red">' + data[prop] + "</li> "
+                    );
                 }
             }
-
         },
     });
 });
@@ -45,7 +45,7 @@ $("#add_new_article_form").submit(function (e) {
         processData: false,
         success: (data) => {
             this.reset();
-            fetchAllAtricle() ;
+            fetchAllAtricle();
             alert(data.message);
         },
         error: function (data) {
@@ -54,12 +54,10 @@ $("#add_new_article_form").submit(function (e) {
     });
 });
 
-$(document).ready(function(){
-    fetchAllAtricle() ;
+$(document).ready(function () {
+    fetchAllAtricle();
     fetchAllAtricleForUser();
 });
-
-
 
 function fetchAllAtricle() {
     $.ajax({
@@ -68,46 +66,83 @@ function fetchAllAtricle() {
         dataType: "json",
         success: function (response) {
             console.log(response.articles);
-            $('#allData2').html("");
-            $('.completeDescription').html("");
-            $.each(response.articles , function(key , item){
-                if(item.description.substr(0,20).length === item.description.length){
-                    $('#allData2').append('\
+            $("#allData2").html("");
+            $(".completeDescription").html("");
+            $.each(response.articles, function (key, item) {
+                if (
+                    item.description.substr(0, 20).length ===
+                    item.description.length
+                ) {
+                    $("#allData2").append(
+                        '\
                     <li class="one_third" id="contentOfNews">\
-                        <article><img src="uploades/'+item.image+'" alt="">\
-                            <h6 class="heading">'+item.title+'</h6>\
+                        <article><img src="uploades/' +
+                            item.image +
+                            '" alt="">\
+                            <h6 class="heading">' +
+                            item.title +
+                            '</h6>\
                             <ul class="nospace meta">\
                                 <li><i class="fa fa-user"></i> <a>Admin</a></li>\
-                                <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
-                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>'+item.created_at+'</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>' +
+                            item.category +
+                            '</a></li>\
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>' +
+                            item.created_at +
+                            "</a></li>\
                             </ul>\
-                            <p>'+item.description.substr(0,20)+'</p>\
+                            <p>" +
+                            item.description.substr(0, 20) +
+                            '</p>\
                             <footer class="nospace">\
-                                <button class="btn" onclick="edit_article(' + item.id + ')"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>\
-                                <button class="btn" onclick="delete_article('+item.id+')"><i class="fa fa-trash" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="edit_article(' +
+                            item.id +
+                            ')"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="delete_article(' +
+                            item.id +
+                            ')"><i class="fa fa-trash" aria-hidden="true"></i></button>\
                             </footer>\
                         </article>\
                     </li>\
-                    ');
-                }else{
-                    $('#allData2').append('\
+                    '
+                    );
+                } else {
+                    $("#allData2").append(
+                        '\
                     <li class="one_third" id="contentOfNews">\
-                        <article><img src="uploades/'+item.image+'" alt="">\
-                            <h6 class="heading">'+item.title+'</h6>\
+                        <article><img src="uploades/' +
+                            item.image +
+                            '" alt="">\
+                            <h6 class="heading">' +
+                            item.title +
+                            '</h6>\
                             <ul class="nospace meta">\
                                 <li><i class="fa fa-user"></i> <a>Admin</a></li>\
-                                <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
-                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>'+item.created_at+'</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>' +
+                            item.category +
+                            '</a></li>\
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>' +
+                            item.created_at +
+                            "</a></li>\
                             </ul>\
-                            <p>'+item.description.substr(0,20)+'...</p>\
+                            <p>" +
+                            item.description.substr(0, 20) +
+                            '...</p>\
                             <footer class="nospace">\
-                                <button class="btn" onclick="get_description_for_admin(' + item.id + ')"><i class="fa fa-info-circle" aria-hidden="true"></i></button>\
-                                <button class="btn" onclick="edit_article(' + item.id + ')"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>\
-                                <button class="btn" onclick="delete_article('+item.id+')"><i class="fa fa-trash" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="get_description_for_admin(' +
+                            item.id +
+                            ')"><i class="fa fa-info-circle" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="edit_article(' +
+                            item.id +
+                            ')"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="delete_article(' +
+                            item.id +
+                            ')"><i class="fa fa-trash" aria-hidden="true"></i></button>\
                             </footer>\
                         </article>\
                     </li>\
-                    ');
+                    '
+                    );
                 }
             });
         },
@@ -121,41 +156,70 @@ function fetchAllAtricleForUser() {
         dataType: "json",
         success: function (response) {
             console.log(response.articles);
-            $('#allData').html("");
-            $.each(response.articles , function(key , item){
-                if(item.description.substr(0,20).length === item.description.length){
-                    $('#allData').append('\
+            $("#allData").html("");
+            $.each(response.articles, function (key, item) {
+                if (
+                    item.description.substr(0, 20).length ===
+                    item.description.length
+                ) {
+                    $("#allData").append(
+                        '\
                     <li class="one_third" id="contentOfNews">\
-                        <article><img src="uploades/'+item.image+'" alt="">\
-                            <h6 class="heading">'+item.title+'</h6>\
+                        <article><img src="uploades/' +
+                            item.image +
+                            '" alt="">\
+                            <h6 class="heading">' +
+                            item.title +
+                            '</h6>\
                             <ul class="nospace meta">\
                                 <li><i class="fa fa-user"></i> <a>Admin</a></li>\
-                                <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
-                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>'+item.created_at+'</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>' +
+                            item.category +
+                            '</a></li>\
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>' +
+                            item.created_at +
+                            "</a></li>\
                             </ul>\
-                            <p>'+item.description.substr(0,20)+'</p>\
+                            <p>" +
+                            item.description.substr(0, 20) +
+                            '</p>\
                             <footer class="nospace">\
                             </footer>\
                         </article>\
                     </li>\
-                    ');
-                }else{
-                    $('#allData').append('\
+                    '
+                    );
+                } else {
+                    $("#allData").append(
+                        '\
                     <li class="one_third" id="contentOfNews">\
-                        <article><img src="uploades/'+item.image+'" alt="">\
-                            <h6 class="heading">'+item.title+'</h6>\
+                        <article><img src="uploades/' +
+                            item.image +
+                            '" alt="">\
+                            <h6 class="heading">' +
+                            item.title +
+                            '</h6>\
                             <ul class="nospace meta">\
                                 <li><i class="fa fa-user"></i> <a>Admin</a></li>\
-                                <li><i class="fa fa-tag"></i> <a>'+item.category+'</a></li>\
-                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>'+item.created_at+'</a></li>\
+                                <li><i class="fa fa-tag"></i> <a>' +
+                            item.category +
+                            '</a></li>\
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <a>' +
+                            item.created_at +
+                            "</a></li>\
                             </ul>\
-                            <p>'+item.description.substr(0,20)+'...</p>\
+                            <p>" +
+                            item.description.substr(0, 20) +
+                            '...</p>\
                             <footer class="nospace">\
-                                <button class="btn" onclick="get_description_for_user(' + item.id + ')"><i class="fa fa-info-circle" aria-hidden="true"></i></button>\
+                                <button class="btn" onclick="get_description_for_user(' +
+                            item.id +
+                            ')"><i class="fa fa-info-circle" aria-hidden="true"></i></button>\
                             </footer>\
                         </article>\
                     </li>\
-                    ');
+                    '
+                    );
                 }
             });
         },
@@ -165,23 +229,32 @@ function fetchAllAtricleForUser() {
 function edit_article(id) {
     $.ajax({
         type: "get",
-        url: "/news/"+id+"/edit",
+        url: "/news/" + id + "/edit",
         dataType: "json",
         success: function (response) {
             console.log(response.articles.id);
-            $('#modalbody').html("");
-            $.each(response  , function(key , item){
-                $('#modalbody').append('\
+            $("#modalbody").html("");
+            $.each(response, function (key, item) {
+                $("#modalbody").append(
+                    '\
                 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">\
-                <input type="hidden" value="'+item.id+'" id="article_id_for_update">\
-                <input type="hidden" value="'+item.image+'" id="image_for_update">\
+                <input type="hidden" value="' +
+                        item.id +
+                        '" id="article_id_for_update">\
+                <input type="hidden" value="' +
+                        item.image +
+                        '" id="image_for_update">\
                     <div class="mb-3">\
                         <label for="exampleFormControlInput1" class="form-label">Article Title</label>\
-                        <input type="text" class="form-control" placeholder="Article Title" name="title2" id="title2" value="'+item.title+'">\
+                        <input type="text" class="form-control" placeholder="Article Title" name="title2" id="title2" value="' +
+                        item.title +
+                        '">\
                     </div>\
                     <div class="mb-3">\
                         <label for="exampleFormControlTextarea1" class="form-label">Article Description</label>\
-                        <textarea class="form-control" placeholder="Article Description" name="description2" id="description2" rows="3">'+item.description+'</textarea>\
+                        <textarea class="form-control" placeholder="Article Description" name="description2" id="description2" rows="3">' +
+                        item.description +
+                        '</textarea>\
                     </div>\
                     <div class="mb-3">\
                         <label for="exampleFormControlTextarea1" class="form-label">Article Ctegory</label>\
@@ -195,169 +268,163 @@ function edit_article(id) {
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>\
                         <input type="submit" class="btn btn-primary" id="btn_update" value="Update">\
                     </div>\
-                ');
+                '
+                );
             });
         },
     });
-    $('#largeModal').modal('show');
+    $("#largeModal").modal("show");
 }
 
-$(document).ready(function(){
-    var form = $('.update_ajax');
+$(document).ready(function () {
+    var form = $(".update_ajax");
 });
 
-$(document).on("click", "#btn_update", function() {
-    id = $('#article_id_for_update').val();
-    var url = "news/"+id;
+$(document).on("click", "#btn_update", function () {
+    id = $("#article_id_for_update").val();
+    var url = "news/" + id;
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
     });
     $.ajax({
         url: url,
         type: "PATCH",
         cache: false,
-        data:{
-            image : $('#image_for_update').val(),
-            title: $('#title2').val(),
-            description: $('#description2').val(),
-            category: $('#category2').val()
+        data: {
+            image: $("#image_for_update").val(),
+            title: $("#title2").val(),
+            description: $("#description2").val(),
+            category: $("#category2").val(),
         },
-        success: function(dataResult){
+        success: function (dataResult) {
             fetchAllAtricle();
             alert(dataResult.message);
-            $('#largeModal').modal('hide');
-        }
+            $("#largeModal").modal("hide");
+        },
     });
 });
 
-
-function delete_article(id){
-    var url = "news/"+id;
+function delete_article(id) {
+    var url = "news/" + id;
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
     });
     $.ajax({
         url: url,
         type: "DELETE",
         cache: false,
-        success: function(dataResult){
+        success: function (dataResult) {
             fetchAllAtricle();
             alert(dataResult.message);
-        }
+        },
     });
 }
 
-
-$(document).on("click", "#btn_forget_password", function() {
+$(document).on("click", "#btn_forget_password", function () {
     // this.preventDefault ;
-    email = $('#email_for_forget_pass').val();
-    checkedPlatform = $('#platform').val();
+    email = $("#email_for_forget_pass").val();
+    checkedPlatform = $("#platform").val();
     var url = "send_email_forget_password";
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
     });
     $.ajax({
         url: url,
         type: "get",
         cache: false,
-        data:{
-            email : email
+        data: {
+            email: email,
         },
-        success: function(dataResult){
-            alert(dataResult.message);
-
+        success: function (dataResult) {
+            alert(dataResult.message2);
         },
-        error: function(dataResult){
-            data = dataResult.responseJSON.errors ;
-            if (Object.keys(data).length > 0){
-                $('#errors').html("");
-                for (var prop in data ) {
-                   alert(data[prop]);
+        error: function (dataResult) {
+            data = dataResult.responseJSON.errors;
+            if (Object.keys(data).length > 0) {
+                $("#errors").html("");
+                for (var prop in data) {
+                    alert(data[prop]);
                 }
             }
-        }
+        },
     });
 });
 
+$(document).on("click", "#btn_reset_password", function () {
+    password = $("#pass_forget").val();
+    repassword = $("#repass_forget").val();
 
-$(document).on("click", "#btn_reset_password", function()
-{
-    password = $('#pass_forget').val();
-    repassword = $('#repass_forget').val();
-
-    if( password === repassword ){
+    if (password === repassword) {
         var url = "actually_reset_password";
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
         });
         $.ajax({
             url: url,
             type: "PATCH",
             cache: false,
-            data:{
-                password : password
+            data: {
+                password: password,
             },
-            success: function(dataResult){
+            success: function (dataResult) {
                 alert(dataResult.msg);
                 window.location = "/adminView";
             },
-            error: function(dataResult){
-                alert('Email is not correct');
+            error: function (dataResult) {
+                alert("Email is not correct");
                 // console.log('error');
-            }
+            },
         });
-    }else{
-        alert('password is not matching');
+    } else {
+        alert("password is not matching");
     }
-
-
 });
 
 function get_description_for_admin(id) {
-    var url = "news/"+id;
+    var url = "news/" + id;
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
     });
     $.ajax({
         url: url,
         type: "get",
         data: id,
         cache: false,
-        success: function(dataResult){
-            $('#readMoreBodyDescription').html("");
-            $('#readMoreBodyDescription').append(dataResult.data.description);
-            $('#readMore').modal('show');
-        }
+        success: function (dataResult) {
+            $("#readMoreBodyDescription").html("");
+            $("#readMoreBodyDescription").append(dataResult.data.description);
+            $("#readMore").modal("show");
+        },
     });
 }
 
 function get_description_for_user(id) {
-    var url = "news/"+id;
+    var url = "news/" + id;
     // var lang = Session["locale"] ;
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
     });
     $.ajax({
         url: url,
         type: "get",
-        data: { id : id },
+        data: { id: id },
         cache: false,
-        success: function(dataResult){
-            $('#readMoreBodyDescription2').html("");
-            $('#readMoreBodyDescription2').append(dataResult.data.description);
-            $('#readMore2').modal('show');
-        }
+        success: function (dataResult) {
+            $("#readMoreBodyDescription2").html("");
+            $("#readMoreBodyDescription2").append(dataResult.data.description);
+            $("#readMore2").modal("show");
+        },
     });
 }

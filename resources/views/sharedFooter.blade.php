@@ -17,7 +17,7 @@
     <!-- jquery js file -->
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="<?php echo asset('layout/scripts/functionality.js')?>"></script>
     <!-- calling for functionality js file -->
 

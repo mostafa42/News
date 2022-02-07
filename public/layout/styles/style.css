@@ -13,7 +13,6 @@
  @import url(owl.carousel.min.css);
  @import url(slick.css);
  @import url(jquery-ui.css);
- @import url(nice-select.css);
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
  * {
      box-sizing: border-box !important;
@@ -929,9 +928,6 @@
      display: inline-block;
      vertical-align: middle;
 }
- .main-menu ul>li:nth-child (6) {
-     padding-right: 0px;
-}
  .nav>li {
      position: inherit;
      display: inline-block;
@@ -1139,17 +1135,6 @@ float: right;
 .best_img {
     text-align: center;
 }
-.best_img::after {
-position: absolute;
-content: "";
-width: 1269px;
-height: 1232px;
-background: url(../images/croo.png);
-top: -55px;
-left: -157%;
-right: 40px;
-background-repeat: no-repeat;
-}
 .best_img figure {
      margin: 0;
 }
@@ -1176,16 +1161,6 @@ font-size: 20px;
     margin-bottom: 136px;
 }
 
-.croos_rt::after {
-position: absolute;
-content: "";
-width: 1269px;
-height: 1232px;
-background: url(../images/croo1.png);
-top: -5px;
-left: -80px;
-background-repeat: no-repeat;
-}
 
 .best_img.croos_rt {
     margin-top: 80px;
@@ -1317,18 +1292,6 @@ display: block;
 .img_box i img {padding-right: 25px; display: inline-block; width: 65px;}
 .img_box figure {margin: 0;}
 
-.img_box::after {
-    position: absolute;
-content: "";
-right: -23px;
-transform: rotate(5deg);
-width: 46px;
-background: url(../images/4.png);
-background-repeat: no-repeat;
-height: 146px;
-top: 92px;
-
-}
 .joe {
     text-align: left;
 }

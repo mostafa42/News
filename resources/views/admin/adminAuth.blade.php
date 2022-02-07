@@ -17,11 +17,11 @@
 
 <!--#############################################################-->
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal ddddddd fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('trans.addNews') }}</h5>
+            <div class="modal-header"> <!-- {{ __('trans.addNews') }} -->
+                <h5 class="modal-title" id="exampleModalLabel">XNXX</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">{{ __('trans.articleCategory') }}</label>
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="category" id="category">
+                        <select class="form-select-lg mb-3" aria-label=".form-select-lg example" name="category" id="category">
                             <option selected value="sports">{{ __('trans.option1') }}</option>
                             <option value="arts">{{ __('trans.option2') }}</option>
                             <option value="politics">{{ __('trans.option3') }}</option>

@@ -53,7 +53,7 @@ class AuthController extends Controller
 
             // check if email is correct or not
 
-            if (!empty($checkEmail)) {
+            if(!empty($checkEmail)){
 
                 $details = [
                     'title' => 'Mail from News.com',

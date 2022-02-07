@@ -39,7 +39,7 @@ class NewsController extends Controller
 
         $newRecord->save();
 
-        $msg =  __("trans.addSucessAlert1") ;
+        $msg =  __("trans.addSuccessAlert1") ;
         return response()->json(['message' => $msg]);
 
 
