@@ -343,6 +343,7 @@ $(document).on("click", "#btn_forget_password", function () {
         },
         success: function (dataResult) {
             alert(dataResult.message2);
+            // console.log(dataResult);
         },
         error: function (dataResult) {
             data = dataResult.responseJSON.errors;
@@ -360,31 +361,42 @@ $(document).on("click", "#btn_reset_password", function () {
     password = $("#pass_forget").val();
     repassword = $("#repass_forget").val();
 
-    if (password === repassword) {
-        var url = "actually_reset_password";
-        $.ajaxSetup({
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-        });
-        $.ajax({
-            url: url,
-            type: "PATCH",
-            cache: false,
-            data: {
-                password: password,
-            },
-            success: function (dataResult) {
-                alert(dataResult.msg);
-                window.location = "/adminView";
-            },
-            error: function (dataResult) {
-                alert("Email is not correct");
-                // console.log('error');
-            },
-        });
-    } else {
-        alert("password is not matching");
+    if(password === repassword){
+        if(password.length >= 6){
+            var url = "actually_reset_password";
+            var arr = [];
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            });
+            $.ajax({
+                url: url,
+                type: "PATCH",
+                cache: false,
+                data: {
+                    password: password,
+                    repassword : repassword
+                },
+                success: function (dataResult) {
+                    alert(dataResult.msg);
+                    window.location = "/adminView";
+                },
+                error: function (dataResult) {
+                    data = dataResult.responseJSON.errors;
+                    if (Object.keys(data).length > 0) {
+                        $("#errors").html("");
+                        for (var prop in data) {
+                            alert(data[prop]);
+                        }
+                    }
+                },
+            });
+        }else{
+            alert("password should be gratter than 6 digits");
+        }
+    }else{
+        alert("password is not match");
     }
 });
 

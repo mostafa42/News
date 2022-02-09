@@ -7,6 +7,7 @@ use App\Http\Middleware\check;
 use App\Http\Middleware\checkMailSending;
 use App\Http\Middleware\LanguageManager;
 use App\Models\News;
+use Illuminate\Http\Client\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -53,7 +54,8 @@ Route::patch('actually_reset_password', [AuthController::class, 'resetPassword']
 
 Route::middleware([checkMailSending::class])->group(function () {
     Route::get('/set_new_password', function () {
-        return view('admin.setNewPassword');
+            session()->forget('checkEmailSent');
+            return view('admin.setNewPassword');
     });
 });
 
@@ -81,9 +83,6 @@ Route::middleware([LanguageManager::class])->group(function () {
     });
 
     Route::get('/{lang}' , [MainController::class, 'getMainRoute'])->name('mainRoute');
-
-
-
 
 
 });
